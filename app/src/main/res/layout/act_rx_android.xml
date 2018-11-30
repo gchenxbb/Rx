@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_rxandroid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World! RxAndroid!" />
+
+    <Button
+        android:id="@+id/btn_rxandroid1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发布者与订阅者 "
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_rxandroid2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="两个线程"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_rxandroid3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="map操作符"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_rxandroid4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="flatMap操作符"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_rxandroid5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="两个连续发射请求"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_rxandroid6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="zip合并"
+        android:textAllCaps="false" />
+</LinearLayout>
