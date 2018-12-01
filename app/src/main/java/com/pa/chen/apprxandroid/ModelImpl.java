@@ -15,15 +15,15 @@ public class ModelImpl {
         return Observable.create(new ObservableOnSubscribe<String>() {//数据发射
             @Override
             public void subscribe(ObservableEmitter<String> e) throws Exception {
-                Log.d(TAG.RXAndroid_1, "begin emitter !");
-                Log.d(TAG.RXAndroid_1, "emitter rxandroid-----one !");
+                Log.d(AppTAG.RXAndroid_1, "begin emitter !");
+                Log.d(AppTAG.RXAndroid_1, "emitter rxandroid-----one !");
                 e.onNext("rxandroid-----one");
-                Log.d(TAG.RXAndroid_1, "emitter rxandroid-----two !");
+                Log.d(AppTAG.RXAndroid_1, "emitter rxandroid-----two !");
                 e.onNext("rxandroid-----two");
-                Log.d(TAG.RXAndroid_1, "emitter rxandroid-----three !");
+                Log.d(AppTAG.RXAndroid_1, "emitter rxandroid-----three !");
                 e.onNext("rxandroid-----three");
                 //e.onComplete();
-                Log.d(TAG.RXAndroid_1, "emitter rxandroid-----four !");
+                Log.d(AppTAG.RXAndroid_1, "emitter rxandroid-----four !");
                 e.onNext("rxandroid-----four");
             }
         });
@@ -34,7 +34,7 @@ public class ModelImpl {
         return Observable.create(new ObservableOnSubscribe<Integer>() {
             @Override
             public void subscribe(ObservableEmitter<Integer> e) throws Exception {
-                Log.d(TAG.RXAndroid_2, "Observable : " + Thread.currentThread().getName());
+                Log.d(AppTAG.RXAndroid_2, "Observable : " + Thread.currentThread().getName());
                 e.onNext(2);
                 e.onComplete();
             }
@@ -53,14 +53,14 @@ public class ModelImpl {
                 .map(new Function<String, RxMediaValue>() {
                     @Override
                     public RxMediaValue apply(String code) throws Exception {
-                        Log.d(TAG.RXAndroid_3, "String apply RxMediaValue " + code);
+                        Log.d(AppTAG.RXAndroid_3, "String apply RxMediaValue " + code);
                         return  new RxMediaValue(code + "_m");
                     }
                 })
                 .map(new Function<RxMediaValue, RxResponse>() {
                     @Override
                     public RxResponse apply(RxMediaValue rxMediaValue) throws Exception {
-                        Log.d(TAG.RXAndroid_3, "RxMediaValue apply RxResponse  " + rxMediaValue.getCode());
+                        Log.d(AppTAG.RXAndroid_3, "RxMediaValue apply RxResponse  " + rxMediaValue.getCode());
                         return new RxResponse(rxMediaValue.getCode() + "_resp");
                     }
                 });
@@ -73,7 +73,7 @@ public class ModelImpl {
         return Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-                Log.d(TAG.RXAndroid_4, "s emitter " + "code_26");//发射
+                Log.d(AppTAG.RXAndroid_4, "s emitter " + "code_26");//发射
                 emitter.onNext("code_26");
                 emitter.onComplete();
             }
@@ -81,7 +81,7 @@ public class ModelImpl {
             @Override
             public String apply(String s) throws Exception {
                 String newStr = s + "_gc";
-                Log.d(TAG.RXAndroid_4, "s apply s " + newStr);
+                Log.d(AppTAG.RXAndroid_4, "s apply s " + newStr);
                 return newStr;
             }
         })
@@ -89,12 +89,12 @@ public class ModelImpl {
                     @Override
                     public ObservableSource<RxMediaValue> apply(String s) throws Exception {
                         RxRequest request = new RxRequest(s + "_req");
-                        Log.d(TAG.RXAndroid_4, "s apply ObservableSource<RxMediaValue> " + request.getCode());
+                        Log.d(AppTAG.RXAndroid_4, "s apply ObservableSource<RxMediaValue> " + request.getCode());
                         return Observable.just(request).flatMap(new Function<RxRequest, ObservableSource<RxMediaValue>>() {
                             @Override
                             public ObservableSource<RxMediaValue> apply(RxRequest rxRequest) throws Exception {
                                 RxMediaValue rxMediaValue = new RxMediaValue(rxRequest.getCode() + "_m");
-                                Log.d(TAG.RXAndroid_4, "rxRequest apply ObservableSource<RxMediaValue> " + rxMediaValue.getCode());
+                                Log.d(AppTAG.RXAndroid_4, "rxRequest apply ObservableSource<RxMediaValue> " + rxMediaValue.getCode());
                                 return Observable.just(rxMediaValue);
                             }
                         });
@@ -104,7 +104,7 @@ public class ModelImpl {
                     @Override
                     public ObservableSource<RxResponse> apply(RxMediaValue rxMediaValue) throws Exception {
                         RxResponse rxResponse = new RxResponse(rxMediaValue.getCode() + "_resp");
-                        Log.d(TAG.RXAndroid_4, "rxMediaValue apply ObservableSource<RxResponse> " + rxResponse.getCode());
+                        Log.d(AppTAG.RXAndroid_4, "rxMediaValue apply ObservableSource<RxResponse> " + rxResponse.getCode());
                         return Observable.just(rxResponse);
                     }
                 });
@@ -116,11 +116,10 @@ public class ModelImpl {
             @Override
             public void subscribe(ObservableEmitter<RxResponse> emitter) throws Exception {
                 RxResponse rxResponse = new RxResponse("code_201");
-                Log.d(TAG.RXAndroid_5, "201 Observable : " + Thread.currentThread().getName());
+                Log.d(AppTAG.RXAndroid_5, "201 Observable : " + Thread.currentThread().getName());
                 emitter.onNext(rxResponse);
             }
         });
     }
-
 
 }
