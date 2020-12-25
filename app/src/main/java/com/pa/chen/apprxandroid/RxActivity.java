@@ -198,7 +198,12 @@ public class RxActivity extends Activity {
 
                         e.onNext("fileName");
                     }
-                }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).map(new Function<String, File>() {
+                }).subscribeOn(Schedulers.io()).doOnSubscribe(new Consumer<Disposable>() {
+                    @Override
+                    public void accept(Disposable disposable) throws Exception {
+                        Log.d(AppLog.RXAndroid_7, Thread.currentThread().getName() + "-doOnSubscribe-0");
+                    }
+                }).observeOn(AndroidSchedulers.mainThread()).map(new Function<String, File>() {
                     @Override
                     public File apply(String s) throws Exception {
                         Log.d(AppLog.RXAndroid_7, Thread.currentThread().getName() + "-1");
@@ -208,8 +213,8 @@ public class RxActivity extends Activity {
                 }).subscribe(new Consumer<File>() {
                     @Override
                     public void accept(File file) throws Exception {
-                        Log.d(AppLog.RXAndroid_7, Thread.currentThread().getName() + "-3");
-                        Log.d(AppLog.RXAndroid_7, file.getAbsolutePath());
+                        Log.d(AppLog.RXAndroid_7, Thread.currentThread().getName() + "-2");
+//                        Log.d(AppLog.RXAndroid_7, file.getAbsolutePath());
                     }
                 });
 
